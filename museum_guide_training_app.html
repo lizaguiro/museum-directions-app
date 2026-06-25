@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Navigator: Tech & Science Museum Guide Training</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles to match the Sci-Fi/Technology Museum Theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 50% 50%, #0B132B 0%, #1C2541 50%, #020C1B 100%);
+            min-height: 100vh;
+        }
+        .header-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .accent-font {
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .mono-font {
+            font-family: 'Share Tech Mono', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-panel-accent {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020C1B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3B82F6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #60A5FA;
+        }
+    </style>
+</head>
+<body class="text-slate-100 overflow-x-hidden pb-12">
+
+    <!-- Top Banner & Audio Engine Warning -->
+    <header class="w-full border-b border-blue-500/30 bg-slate-950/80 px-4 py-4 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-lg text-white shadow-lg shadow-blue-500/20">
+                    <i data-lucide="compass" class="w-6 h-6 animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="header-font text-lg md:text-xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent tracking-wider">
+                        MUSEUM NAVIGATOR
+                    </h1>
+                    <p class="text-xs text-cyan-400 font-medium tracking-widest accent-font">LEVEL: INTERMEDIATE (B1-B2)</p>
+                </div>
+            </div>
+            <!-- Global Dashboard -->
+            <div class="flex items-center gap-6 text-sm">
+                <div class="flex items-center gap-2 bg-slate-900/90 border border-blue-500/20 px-3 py-1.5 rounded-full">
+                    <i data-lucide="award" class="w-4 h-4 text-yellow-400"></i>
+                    <span class="font-semibold text-slate-300">Total Points: <span id="global-score" class="text-yellow-400 mono-font text-base">0</span></span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-900/90 border border-blue-500/20 px-3 py-1.5 rounded-full">
+                    <i data-lucide="volume-2" class="w-4 h-4 text-cyan-400"></i>
+                    <span class="text-slate-300 text-xs">Audio Synthesis: <span class="text-green-400 font-bold">READY</span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="max-w-6xl mx-auto px-4 mt-6">
+        
+        <!-- Welcome Screen / Home -->
+        <section id="welcome-screen" class="glass-panel rounded-2xl p-6 md:p-10 text-center relative overflow-hidden transition-all duration-500">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl"></div>
+            
+            <div class="mb-6 inline-block p-4 bg-blue-500/10 rounded-full border border-blue-500/30">
+                <i data-lucide="map" class="w-12 h-12 text-blue-400 animate-bounce"></i>
+            </div>
+            
+            <h2 class="header-font text-3xl md:text-5xl font-extrabold mb-4 text-white tracking-tight">
+                Tech & Science Museum <br>
+                <span class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Guide Training Academy</span>
+            </h2>
+            
+            <p class="max-w-2xl mx-auto text-slate-300 mb-8 text-base md:text-lg leading-relaxed">
+                Welcome, guide candidate! Modern museums require interactive navigation and instruction experts. This module will sharpen your English vocabulary, directions-giving capability, and simulated face-to-face problem-solving skills inside our high-tech museum grounds.
+            </p>
+
+            <!-- Learning Map / Path Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-10 text-left">
+                <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800 flex items-start gap-3">
+                    <div class="bg-cyan-500/10 text-cyan-400 p-2 rounded-lg mt-0.5"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">1. Before Listening</h4>
+                        <p class="text-xs text-slate-400">Vocabulary builder, museum map key, and diagnostic directions trivia.</p>
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800 flex items-start gap-3">
+                    <div class="bg-purple-500/10 text-purple-400 p-2 rounded-lg mt-0.5"><i data-lucide="headphones" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">2. While Listening</h4>
+                        <p class="text-xs text-slate-400">Listen to real-world visitors and test your listening comprehension skills.</p>
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800 flex items-start gap-3">
+                    <div class="bg-indigo-500/10 text-indigo-400 p-2 rounded-lg mt-0.5"><i data-lucide="pencil" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">3. After Listening</h4>
+                        <p class="text-xs text-slate-400">Construct written routes, insert key transition terms, and receive feedback.</p>
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-950/50 rounded-xl border border-slate-800 flex items-start gap-3">
+                    <div class="bg-emerald-500/10 text-emerald-400 p-2 rounded-lg mt-0.5"><i data-lucide="users" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">4. Live Simulation</h4>
+                        <p class="text-xs text-slate-400">Role-play as a museum guide helping 5 random visitors face-to-face.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Button -->
+            <button onclick="startApp()" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-xl shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 inline-flex items-center gap-3">
+                <i data-lucide="play-circle" class="w-6 h-6"></i>
+                <span class="header-font uppercase tracking-wider">Start Training Module</span>
+            </button>
+        </section>
+
+        <!-- Main Dashboard Tracker (Shown during course) -->
+        <div id="course-navigation" class="hidden glass-panel rounded-xl p-4 mb-6 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Current Phase:</span>
+                <span id="current-phase-badge" class="px-3 py-1 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-md text-xs font-bold header-font">BEFORE LISTENING</span>
+            </div>
+            
+            <!-- Overall Progress Bar -->
+            <div class="flex-1 max-w-md mx-4">
+                <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-400 font-medium">Training Progress</span>
+                    <span id="progress-percentage" class="text-cyan-400 font-semibold">25%</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-2.5 overflow-hidden border border-slate-800">
+                    <div id="progress-bar-fill" class="bg-gradient-to-r from-blue-500 to-purple-500 h-2.5 transition-all duration-500" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex gap-2">
+                <button onclick="resetTraining()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs rounded-md inline-flex items-center gap-1.5 transition-colors">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Restart
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 1: BEFORE LISTENING -->
+        <section id="before-listening-section" class="hidden space-y-8 animate-fadeIn">
+            
+            <!-- Part A: Interactive Museum Vocabulary Hub -->
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="flex items-center gap-2.5 mb-4 border-b border-slate-800 pb-3">
+                    <i data-lucide="globe" class="w-6 h-6 text-cyan-400"></i>
+                    <h3 class="header-font text-xl font-bold text-white">Part A: Museum Vocabulary & Floor Plan Map</h3>
+                </div>
+                <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+                    Hover or click on the vocabulary tiles below to explore the map locations, hear their pronunciation, and memorize standard museum areas. As a guide, accuracy saves visitor time!
+                </p>
+
+                <!-- Vocabulary Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 mb-8">
+                    <!-- Vocab Item 1 -->
+                    <div onclick="playVocabAudio('entrance')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="log-in" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Entrance</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Main doors where tickets are scanned.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 2 -->
+                    <div onclick="playVocabAudio('exit')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-rose-500/10 rounded-full flex items-center justify-center text-rose-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="log-out" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Exit</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">The pathway to leave the premises.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 3 -->
+                    <div onclick="playVocabAudio('information desk')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-cyan-500/10 rounded-full flex items-center justify-center text-cyan-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="info" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Info Desk</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">The central hub for questions and lost & found.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 4 -->
+                    <div onclick="playVocabAudio('robotics exhibit')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center text-purple-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Robotics Exhibit</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Area showcasing advanced androids & automation.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 5 -->
+                    <div onclick="playVocabAudio('space exhibit')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-yellow-500/10 rounded-full flex items-center justify-center text-yellow-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="orbit" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Space Exhibit</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Rocket engines, galaxy simulators, and moons.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 6 -->
+                    <div onclick="playVocabAudio('laboratory')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Laboratory</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Working chemical and physics research lab.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 7 -->
+                    <div onclick="playVocabAudio('stairs')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-indigo-500/10 rounded-full flex items-center justify-center text-indigo-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Stairs</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Traditional manual steps connecting levels.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 8 -->
+                    <div onclick="playVocabAudio('elevator')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-teal-500/10 rounded-full flex items-center justify-center text-teal-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="arrow-up-down" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Elevator</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Vertical mechanical lift for accessibility.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 9 -->
+                    <div onclick="playVocabAudio('gift shop')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-orange-500/10 rounded-full flex items-center justify-center text-orange-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Gift Shop</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Where you purchase science kits and magnets.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                    <!-- Vocab Item 10 -->
+                    <div onclick="playVocabAudio('restrooms')" class="group cursor-pointer p-4 bg-slate-900/60 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/50 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-center flex flex-col items-center justify-between">
+                        <div class="w-10 h-10 bg-pink-500/10 rounded-full flex items-center justify-center text-pink-400 mb-2.5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="shower-head" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Restrooms</span>
+                        <p class="text-[11px] text-slate-500 line-clamp-2">Public facilities for sanitation and hygiene.</p>
+                        <button class="mt-2 text-[10px] text-cyan-400 flex items-center gap-1"><i data-lucide="volume-2" class="w-3 h-3"></i> Pronounce</button>
+                    </div>
+                </div>
+
+                <!-- Interactive Map Visual Guide -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Museum Digital Terminal Layout View</span>
+                        <span class="text-[11px] text-slate-500 font-mono">1ST & 2ND FLOOR DUAL PATHWAYS</span>
+                    </div>
+                    
+                    <!-- Visual map layout mock with grid CSS -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs font-mono">
+                        <div class="p-3 border border-slate-800 bg-slate-900/80 rounded-md">
+                            <div class="text-blue-400 font-bold">1ST FLOOR: SOUTH ENTRY</div>
+                            <div class="mt-1 text-slate-400 text-[11px]">Entrance → Info Desk → Gift Shop</div>
+                        </div>
+                        <div class="p-3 border border-slate-800 bg-slate-900/80 rounded-md">
+                            <div class="text-emerald-400 font-bold">1ST FLOOR: NORTH DEV</div>
+                            <div class="mt-1 text-slate-400 text-[11px]">Laboratory & Restrooms</div>
+                        </div>
+                        <div class="p-3 border border-slate-800 bg-slate-900/80 rounded-md">
+                            <div class="text-purple-400 font-bold">TRANSITION SHAFT</div>
+                            <div class="mt-1 text-slate-400 text-[11px]">Central Elevator & Stairwell</div>
+                        </div>
+                        <div class="p-3 border border-slate-800 bg-slate-900/80 rounded-md">
+                            <div class="text-yellow-400 font-bold">2ND FLOOR: GALACTIC VIEW</div>
+                            <div class="mt-1 text-slate-400 text-[11px]">Space Exhibit & Robotics Hub</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part B: Diagnostic Directions Trivia -->
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2.5">
+                        <i data-lucide="check-square" class="w-6 h-6 text-purple-400"></i>
+                        <h3 class="header-font text-xl font-bold text-white">Part B: Directions Diagnostic Quiz</h3>
+                    </div>
+                    <span class="text-xs bg-slate-900 border border-purple-500/30 text-purple-400 px-3 py-1 rounded-full font-mono">Score +10 Points Each</span>
+                </div>
+                <p class="text-sm text-slate-300 mb-6">
+                    Answer these 5 intermediate grammar and structures questions on giving direction & instructions in public spaces to calibrate your current knowledge level.
+                </p>
+
+                <!-- Questions Container -->
+                <div id="diagnostic-questions-container" class="space-y-6">
+                    <!-- Loaded dynamically via JavaScript -->
+                </div>
+
+                <!-- Inline Action -->
+                <div class="mt-8 flex justify-end">
+                    <button id="diagnostic-submit-btn" onclick="checkDiagnosticAnswers()" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl transition-all duration-200 shadow-md flex items-center gap-2">
+                        <span>Verify Diagnostics</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                    <button id="diagnostic-next-btn" onclick="transitionToPhase(2)" class="hidden px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold rounded-xl transition-all duration-200 shadow-md flex items-center gap-2">
+                        <span>Advance to Listening</span>
+                        <i data-lucide="headphones" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Section 2: WHILE LISTENING -->
+        <section id="while-listening-section" class="hidden space-y-8 animate-fadeIn">
+            
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="flex items-center gap-2.5 mb-4 border-b border-slate-800 pb-3">
+                    <i data-lucide="headphones" class="w-6 h-6 text-blue-400"></i>
+                    <h3 class="header-font text-xl font-bold text-white">Interactive Audio Simulation Hub</h3>
+                </div>
+                
+                <!-- Audio Controller Box -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950 p-6 rounded-2xl border border-blue-500/20 mb-8 items-center">
+                    <div class="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
+                        <div class="p-3 bg-blue-500/10 border border-blue-500/30 rounded-full mb-3 text-blue-400 inline-block animate-pulse">
+                            <i data-lucide="mic" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Conversation #1034</h4>
+                        <p class="text-xs text-slate-400 mt-1">Topic: Requesting Directions to Space, Lab & Gift Shop</p>
+                        <p class="text-xs text-yellow-400 mt-2 font-mono flex items-center gap-1 justify-center lg:justify-start">
+                            <i data-lucide="info" class="w-3.5 h-3.5"></i> Synthesized with premium English accents
+                        </p>
+                    </div>
+
+                    <!-- Audio Deck Interface -->
+                    <div class="lg:col-span-8 flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-cyan-400">SOUND BOARD DECK STATUS: ACTIVE</span>
+                            <span id="audio-duration-display" class="text-xs font-mono text-slate-400">00:00 / 01:24</span>
+                        </div>
+                        
+                        <div class="w-full bg-slate-900 border border-slate-800 rounded-lg p-4 flex items-center justify-between gap-4">
+                            <!-- Play Controls -->
+                            <div class="flex items-center gap-3">
+                                <button id="play-listening-audio-btn" onclick="triggerSyntheticListeningAudio()" class="w-12 h-12 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-105 active:scale-95">
+                                    <i data-lucide="play" class="w-6 h-6 fill-current"></i>
+                                </button>
+                                <button onclick="stopSyntheticListeningAudio()" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 text-slate-400 rounded-full flex items-center justify-center transition-colors">
+                                    <i data-lucide="square" class="w-4 h-4 fill-current"></i>
+                                </button>
+                            </div>
+
+                            <!-- Waveform Animation -->
+                            <div class="flex-1 flex items-end justify-center gap-1 h-8 px-4" id="audio-waveform">
+                                <div class="w-1 bg-slate-700 h-2 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-4 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-1 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-5 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-3 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-6 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-2 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-4 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-2 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-5 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-3 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-7 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-4 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-2 rounded transition-all"></div>
+                                <div class="w-1 bg-slate-700 h-1 rounded transition-all"></div>
+                            </div>
+
+                            <!-- Dialogue Script Toggle -->
+                            <button id="toggle-script-btn" onclick="toggleAudioScript()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded text-slate-300 transition-colors flex items-center gap-1.5">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Reveal Script
+                            </button>
+                        </div>
+
+                        <!-- Dialogue Box (Hidden by default, shown when user requests) -->
+                        <div id="audio-script-box" class="hidden max-h-40 overflow-y-auto bg-slate-900/90 border border-slate-800 p-3 rounded-lg text-xs leading-relaxed text-slate-300 font-mono space-y-2">
+                            <p class="text-blue-400"><strong class="text-white">[Visitor]:</strong> Hello! Excuse me. I'm a bit lost. Can you tell me how to get to the Robotics Exhibit from here?</p>
+                            <p class="text-purple-400"><strong class="text-white">[Guide]:</strong> Certainly! Welcome to the museum. Since you are standing here by the Entrance, you need to go straight ahead, past the main Information Desk, until you hit the central elevators.</p>
+                            <p class="text-blue-400"><strong class="text-white">[Visitor]:</strong> Okay, I see the elevators. Do I go up?</p>
+                            <p class="text-purple-400"><strong class="text-white">[Guide]:</strong> Exactly! Take the elevator up to the second floor. When you exit, turn right immediately. Walk past the Space Exhibit on your left, and you'll find the Robotics Exhibit right at the end of the hall. You can't miss it!</p>
+                            <p class="text-blue-400"><strong class="text-white">[Visitor]:</strong> Excellent, thank you. And what about the Science Laboratory? I want to attend the 2 PM chemistry demonstration.</p>
+                            <p class="text-purple-400"><strong class="text-white">[Guide]:</strong> Ah, the Laboratory is located on the first floor. Instead of taking the elevator, stay on this floor and turn left right before you reach it. Walk down that corridor. The laboratory will be the second door on your right, directly opposite the restrooms.</p>
+                            <p class="text-blue-400"><strong class="text-white">[Visitor]:</strong> Understood! Left before the elevator, then second right opposite the restrooms. You've been extremely helpful. Have a great day!</p>
+                            <p class="text-purple-400"><strong class="text-white">[Guide]:</strong> It's my absolute pleasure. Enjoy your exploration!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Listening Questions -->
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <h4 class="font-bold text-white text-base flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+                            Comprehension Exercises
+                        </h4>
+                        <span class="text-xs text-slate-400">Total: 4 Critical Assessment Milestones</span>
+                    </div>
+
+                    <!-- Question 1 -->
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
+                        <div class="font-semibold text-white text-sm mb-3">1. Where is the visitor standing at the beginning of the conversation?</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <button onclick="checkListeningAnswer(1, 'A')" class="listening-opt-1 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                A) At the Science Laboratory
+                            </button>
+                            <button onclick="checkListeningAnswer(1, 'B')" class="listening-opt-1 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                B) By the central elevator shaft
+                            </button>
+                            <button onclick="checkListeningAnswer(1, 'C')" class="listening-opt-1 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                C) Standing near the Entrance area
+                            </button>
+                            <button onclick="checkListeningAnswer(1, 'D')" class="listening-opt-1 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                D) In the Space Exhibit
+                            </button>
+                        </div>
+                        <div id="listening-feedback-1" class="hidden mt-3 p-2.5 rounded text-xs"></div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
+                        <div class="font-semibold text-white text-sm mb-3">2. TRUE OR FALSE: The Robotics Exhibit is on the first floor.</div>
+                        <div class="flex gap-3">
+                            <button onclick="checkListeningAnswer(2, 'TRUE')" class="listening-opt-2 px-5 py-2.5 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                True
+                            </button>
+                            <button onclick="checkListeningAnswer(2, 'FALSE')" class="listening-opt-2 px-5 py-2.5 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                False
+                            </button>
+                        </div>
+                        <div id="listening-feedback-2" class="hidden mt-3 p-2.5 rounded text-xs"></div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
+                        <div class="font-semibold text-white text-sm mb-3">3. Fill in the Blank: To visit the Laboratory, the visitor must turn <span class="text-cyan-400 font-bold underline">_________</span> right before reaching the elevator.</div>
+                        <div class="flex flex-col sm:flex-row gap-2 max-w-md">
+                            <input type="text" id="listening-q3-input" placeholder="Type direction..." class="bg-slate-950 border border-slate-850 px-4 py-2 rounded text-sm text-slate-100 focus:outline-none focus:border-cyan-500 flex-grow uppercase">
+                            <button onclick="checkListeningQ3()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded text-xs transition-colors">Check Blank</button>
+                        </div>
+                        <div id="listening-feedback-3" class="hidden mt-3 p-2.5 rounded text-xs"></div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
+                        <div class="font-semibold text-white text-sm mb-3">4. What landmark is directly opposite the Science Laboratory?</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <button onclick="checkListeningAnswer(4, 'A')" class="listening-opt-4 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                A) The Information Desk
+                            </button>
+                            <button onclick="checkListeningAnswer(4, 'B')" class="listening-opt-4 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                B) The Public Restrooms
+                            </button>
+                            <button onclick="checkListeningAnswer(4, 'C')" class="listening-opt-4 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                C) The Museum Gift Shop
+                            </button>
+                            <button onclick="checkListeningAnswer(4, 'D')" class="listening-opt-4 text-left p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg text-xs text-slate-300 hover:text-white transition-all">
+                                D) The Main Entrance
+                            </button>
+                        </div>
+                        <div id="listening-feedback-4" class="hidden mt-3 p-2.5 rounded text-xs"></div>
+                    </div>
+                </div>
+
+                <!-- Next Phase Navigation -->
+                <div class="mt-8 flex justify-end">
+                    <button onclick="transitionToPhase(3)" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-md flex items-center gap-2">
+                        <span>Advance to After Listening</span>
+                        <i data-lucide="pencil" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Section 3: AFTER LISTENING -->
+        <section id="after-listening-section" class="hidden space-y-8 animate-fadeIn">
+            
+            <!-- Cloze text activity -->
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="flex items-center gap-2.5 mb-4 border-b border-slate-800 pb-3">
+                    <i data-lucide="edit-3" class="w-6 h-6 text-purple-400"></i>
+                    <h3 class="header-font text-xl font-bold text-white">Part A: Formulating Advanced Directions</h3>
+                </div>
+                <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+                    Complete the directions to the Gift Shop from the Robotics Exhibit by selecting the most appropriate preposition, transition, or imperative term. This develops precise speech flow.
+                </p>
+
+                <!-- Interactive Fill-in-the-gap text block -->
+                <div class="bg-slate-950/80 p-5 rounded-xl border border-slate-800 text-sm md:text-base leading-loose text-slate-300 space-y-4">
+                    <p>
+                        "To get to the Gift Shop from the second-floor Robotics Exhibit, first exit the gallery and head 
+                        <select id="cloze-gap-1" class="bg-slate-900 border border-slate-750 rounded px-2 py-1 text-cyan-400 font-bold focus:outline-none">
+                            <option value="">[Choose term]</option>
+                            <option value="straight">straight</option>
+                            <option value="upward">upward</option>
+                            <option value="across">across</option>
+                        </select> 
+                        down the corridor, passing the Space Exhibit. 
+                        <select id="cloze-gap-2" class="bg-slate-900 border border-slate-750 rounded px-2 py-1 text-cyan-400 font-bold focus:outline-none">
+                            <option value="">[Choose term]</option>
+                            <option value="Finally">Finally</option>
+                            <option value="Once">Once</option>
+                            <option value="First">First</option>
+                        </select> 
+                        you reach the elevator, push the button and go 
+                        <select id="cloze-gap-3" class="bg-slate-900 border border-slate-750 rounded px-2 py-1 text-cyan-400 font-bold focus:outline-none">
+                            <option value="">[Choose term]</option>
+                            <option value="down">down</option>
+                            <option value="into">into</option>
+                            <option value="under">under</option>
+                        </select> 
+                        to the first floor. Walk out of the elevator and head toward the main entrance. You will find the Gift Shop located right 
+                        <select id="cloze-gap-4" class="bg-slate-900 border border-slate-750 rounded px-2 py-1 text-cyan-400 font-bold focus:outline-none">
+                            <option value="">[Choose term]</option>
+                            <option value="next to">next to</option>
+                            <option value="inside">inside</option>
+                            <option value="above">above</option>
+                        </select> 
+                        the ticket scanning terminal, on your left hand side."
+                    </p>
+                </div>
+
+                <div class="mt-4 flex justify-between items-center">
+                    <button onclick="checkClozePassage()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded text-xs font-bold transition-colors text-white">
+                        Verify Passage
+                    </button>
+                    <span id="cloze-feedback" class="text-sm font-semibold"></span>
+                </div>
+            </div>
+
+            <!-- Short Answer Analysis -->
+            <div class="glass-panel rounded-2xl p-6">
+                <div class="flex items-center gap-2.5 mb-4 border-b border-slate-800 pb-3">
+                    <i data-lucide="help-circle" class="w-6 h-6 text-indigo-400"></i>
+                    <h3 class="header-font text-xl font-bold text-white">Part B: Active Instruction-Giving Analysis</h3>
+                </div>
+                <p class="text-sm text-slate-300 mb-6">
+                    A family with small children asks you: <strong class="text-cyan-300">"Where are the restrooms and can we use the elevator?"</strong>. Write down your guide response. Make sure to use polite imperative structures and sequence transition markers (e.g., <em>"First... then... make sure to..."</em>).
+                </p>
+
+                <!-- Input area -->
+                <div class="space-y-4">
+                    <textarea id="short-answer-input" rows="4" placeholder="Type your full guide directions response here (minimum 15 words)..." class="w-full bg-slate-950 border border-slate-850 rounded-xl p-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"></textarea>
+                    
+                    <div class="flex justify-between items-center">
+                        <button onclick="analyzeShortAnswer()" class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl text-xs shadow-md transition-colors">
+                            Analyze Response Structure
+                        </button>
+                        <span id="short-answer-char-count" class="text-xs text-slate-500 font-mono">0 / 15 words min</span>
+                    </div>
+
+                    <!-- Simulated intelligent parser output -->
+                    <div id="short-answer-feedback" class="hidden p-4 rounded-xl border"></div>
+                </div>
+
+                <!-- Next Phase Navigation -->
+                <div class="mt-10 border-t border-slate-850 pt-6 flex justify-end">
+                    <button onclick="transitionToPhase(4)" class="px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold rounded-xl shadow-lg flex items-center gap-2">
+                        <span>Launch Simulation Room</span>
+                        <i data-lucide="play-circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Section 4: ROLE PLAY SIMULATION ROOM -->
+        <section id="simulation-section" class="hidden space-y-6 animate-fadeIn">
+            
+            <div class="glass-panel rounded-2xl p-6">
+                <!-- Simulation Title and Instructions -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-lg">
+                            <i data-lucide="users" class="w-6 h-6 animate-pulse"></i>
+                        </div>
+                        <div>
+                            <h3 class="header-font text-xl font-bold text-white">Virtual Museum Guide Simulator</h3>
+                            <p class="text-xs text-slate-400">Experience 5 random scenarios with voice rendering.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress of simulation -->
+                    <div class="flex items-center gap-4">
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400 font-bold uppercase">Visitor No.</div>
+                            <div class="text-lg font-bold text-emerald-400 font-mono" id="sim-counter">1 / 5</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400 font-bold uppercase">Sim Score</div>
+                            <div class="text-lg font-bold text-yellow-400 font-mono" id="sim-points">0 PTS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Interactive Character Avatar Card -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-slate-950/80 rounded-2xl border border-slate-800 p-6 items-center mb-6">
+                    
+                    <!-- Avatar visual placeholder (CSS) -->
+                    <div class="md:col-span-3 flex flex-col items-center">
+                        <div id="sim-avatar-container" class="w-24 h-24 rounded-full border-2 border-emerald-500 flex items-center justify-center bg-gradient-to-tr from-slate-900 to-slate-800 relative shadow-lg shadow-emerald-500/15">
+                            <!-- Injected icon dynamically -->
+                            <i id="visitor-icon" data-lucide="smile" class="w-12 h-12 text-emerald-400"></i>
+                            <!-- Scanner Overlay effect -->
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/10 to-transparent animate-pulse rounded-full"></div>
+                        </div>
+                        <div id="visitor-name" class="mt-3 font-bold text-white tracking-wide text-sm">Citizen #1</div>
+                        <div id="visitor-tag" class="text-[10px] uppercase font-mono tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full mt-1">Touring Parent</div>
+                    </div>
+
+                    <!-- Dialogue box bubble style -->
+                    <div class="md:col-span-9 space-y-4">
+                        <div class="relative bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                            <!-- Tail -->
+                            <div class="absolute left-1/2 md:left-0 top-0 md:top-1/2 -translate-y-1/2 md:-translate-x-1/2 rotate-45 w-3 h-3 bg-slate-900 border-l border-t border-slate-800"></div>
+                            
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[10px] text-cyan-400 uppercase tracking-widest font-mono">Visitor Voice Command</span>
+                                <button onclick="speakVisitorScenario()" class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 rounded text-[10px] font-bold flex items-center gap-1 transition-colors">
+                                    <i data-lucide="volume-2" class="w-3 h-3"></i> Speak Line
+                                </button>
+                            </div>
+                            
+                            <p id="visitor-request-text" class="text-sm md:text-base text-slate-200 italic leading-relaxed">
+                                "Excuse me, where is the space exhibit? My son wants to see the rocket engines!"
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Response Selection Terminal -->
+                <div class="space-y-4">
+                    <h4 class="text-xs uppercase tracking-widest text-slate-400 font-bold flex items-center gap-1.5 mb-2">
+                        <i data-lucide="terminal" class="w-3.5 h-3.5 text-blue-400"></i> Select your Guide Response:
+                    </h4>
+
+                    <div id="sim-choices-grid" class="grid grid-cols-1 gap-3">
+                        <!-- Dynamic simulation options loaded in JS -->
+                    </div>
+                </div>
+
+                <!-- Simulation Action Bar -->
+                <div class="mt-8 border-t border-slate-850 pt-5 flex justify-between items-center">
+                    <div id="sim-feedback-panel" class="hidden flex-1 mr-4 p-3 rounded-lg text-xs leading-normal">
+                        <!-- Feedback filled in JS -->
+                    </div>
+                    <button id="sim-next-btn" onclick="nextSimulationScenario()" class="hidden px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-1.5 transition-all">
+                        <span>Next Visitor</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                    <button id="sim-results-btn" onclick="showFinalResults()" class="hidden px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl text-sm shadow-md flex items-center gap-1.5 transition-all">
+                        <span>Finish Academy Assessment</span>
+                        <i data-lucide="flag" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Final Performance Report & Scoreboard -->
+        <section id="results-screen" class="hidden glass-panel rounded-2xl p-6 md:p-10 text-center relative overflow-hidden transition-all duration-500">
+            <div class="absolute -top-12 -left-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+            <div class="mb-6 inline-block p-4 bg-emerald-500/10 rounded-full border border-emerald-500/30">
+                <i data-lucide="award" class="w-14 h-14 text-emerald-400 animate-pulse"></i>
+            </div>
+
+            <h2 class="header-font text-3xl md:text-5xl font-extrabold mb-2 text-white">
+                Training Assessment <br>
+                <span class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">Complete</span>
+            </h2>
+            <p id="evaluation-stamp" class="text-xs uppercase font-mono tracking-widest text-emerald-400 mb-6">GRADUATED WITH DISTINCTION</p>
+
+            <!-- Score breakdown grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8 text-center">
+                <div class="p-4 bg-slate-950/70 border border-slate-800 rounded-xl">
+                    <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Diagnostic Score</span>
+                    <span id="score-val-diag" class="text-2xl font-black text-purple-400 mono-font">0 / 50</span>
+                </div>
+                <div class="p-4 bg-slate-950/70 border border-slate-800 rounded-xl">
+                    <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Listening Score</span>
+                    <span id="score-val-listening" class="text-2xl font-black text-blue-400 mono-font">0 / 40</span>
+                </div>
+                <div class="p-4 bg-slate-950/70 border border-slate-800 rounded-xl">
+                    <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Cloze/Analysis</span>
+                    <span id="score-val-cloze" class="text-2xl font-black text-indigo-400 mono-font">0 / 30</span>
+                </div>
+                <div class="p-4 bg-slate-950/70 border border-slate-800 rounded-xl">
+                    <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Simulated Role-play</span>
+                    <span id="score-val-sim" class="text-2xl font-black text-emerald-400 mono-font">0 / 50</span>
+                </div>
+            </div>
+
+            <!-- Big Combined Grade Box -->
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 max-w-lg mx-auto mb-10 flex flex-col sm:flex-row justify-around items-center gap-6">
+                <div>
+                    <h4 class="header-font text-sm font-bold text-slate-400 tracking-wider">AGGREGATE RATING</h4>
+                    <span id="final-aggregate-pts" class="text-4xl font-extrabold text-white tracking-tighter block mt-2 mono-font">170 <span class="text-lg text-slate-500">/ 170</span></span>
+                    <p class="text-xs text-slate-400 mt-1">Excellent museum spatial communication.</p>
+                </div>
+                
+                <div class="h-24 w-[1px] bg-slate-800 hidden sm:block"></div>
+                
+                <div>
+                    <h4 class="header-font text-sm font-bold text-slate-400 tracking-wider">CERTIFICATION LEVEL</h4>
+                    <span id="cert-badge" class="mt-2 block px-4 py-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-lg text-sm font-bold header-font">
+                        CERTIFIED NAVIGATOR
+                    </span>
+                </div>
+            </div>
+
+            <!-- Retry Academy Button -->
+            <button onclick="resetTraining()" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-xl transition-all duration-300 inline-flex items-center gap-3">
+                <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                <span class="header-font uppercase tracking-wider">Restart Module</span>
+            </button>
+        </section>
+
+    </main>
+
+    <!-- Synthetic Sound Feedback Controller (WAV Audio Generation for SFX) -->
+    <script>
+        // Generating browser synthesized audio effects so the user gets real-time audio gratification
+        const AudioFX = {
+            ctx: null,
+            init() {
+                if (!this.ctx) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            },
+            correct() {
+                this.init();
+                const now = this.ctx.currentTime;
+                const osc1 = this.ctx.createOscillator();
+                const osc2 = this.ctx.createOscillator();
+                const gainNode = this.ctx.createGain();
+                
+                osc1.type = 'sine';
+                osc1.frequency.setValueAtTime(523.25, now); // C5
+                osc1.frequency.exponentialRampToValueAtTime(1046.50, now + 0.15); // C6
+                
+                osc2.type = 'triangle';
+                osc2.frequency.setValueAtTime(659.25, now); // E5
+                osc2.frequency.exponentialRampToValueAtTime(1318.51, now + 0.15); // E6
+                
+                gainNode.gain.setValueAtTime(0.15, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                
+                osc1.connect(gainNode);
+                osc2.connect(gainNode);
+                gainNode.connect(this.ctx.destination);
+                
+                osc1.start(now);
+                osc2.start(now);
+                osc1.stop(now + 0.3);
+                osc2.stop(now + 0.3);
+            },
+            wrong() {
+                this.init();
+                const now = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gainNode = this.ctx.createGain();
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(220.00, now); // A3
+                osc.frequency.linearRampToValueAtTime(110.00, now + 0.25); // A2
+                
+                gainNode.gain.setValueAtTime(0.15, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                
+                osc.connect(gainNode);
+                gainNode.connect(this.ctx.destination);
+                
+                osc.start(now);
+                osc.stop(now + 0.3);
+            }
+        };
+
+        // Text To Speech helper utilizing browser synthesis APIs for highly responsive interactive dialogs
+        function speakText(text, rate = 0.95, isVisitor = false) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Cancel any current utterances
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = rate;
+                
+                // Assign a distinct voice index based on character if possible
+                const voices = window.speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    // Try to pick a female voice for visitors, or male for guides to create simulation variation
+                    if (isVisitor) {
+                        const femaleVoice = voices.find(v => v.name.toLowerCase().includes('google us english') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('female'));
+                        if (femaleVoice) utterance.voice = femaleVoice;
+                    } else {
+                        const maleVoice = voices.find(v => v.name.toLowerCase().includes('david') || v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('male'));
+                        if (maleVoice) utterance.voice = maleVoice;
+                    }
+                }
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                console.warn("Speech Synthesis API not fully responsive or supported on this browser.");
+            }
+        }
+    </script>
+
+    <!-- Main Logic Coordinator -->
+    <script>
+        // Diagnostic Assessment Array Data
+        const diagnosticQuestions = [
+            {
+                id: 1,
+                question: "Which expression is most natural for directing a visitor to walk next to/alongside an exhibition?",
+                options: [
+                    { key: "A", text: "Walk through the stairs downwards." },
+                    { key: "B", text: "Go down this hallway, past the robotics gallery on your left." },
+                    { key: "C", text: "Climb straight ahead into the entrance lobby." },
+                    { key: "D", text: "Turn around opposite the informational desk." }
+                ],
+                correct: "B",
+                explanation: "'past the gallery on your left' is the standard, polite intermediate navigation preposition pattern."
+            },
+            {
+                id: 2,
+                question: "Choose the correct phrase to complete: 'To reach the main restrooms, please ____ at the junction before the laboratory.'",
+                options: [
+                    { key: "A", text: "take a right turn" },
+                    { key: "B", text: "arrive straight" },
+                    { key: "C", text: "make upstairs" },
+                    { key: "D", text: "escalate inside" }
+                ],
+                correct: "A",
+                explanation: "'take a right turn' or 'turn right' is grammatically accurate when advising directional changes."
+            },
+            {
+                id: 3,
+                question: "A visitor asks: 'Can we access the Space Exhibit by elevator?'. Which answer is grammatically correct and helpful?",
+                options: [
+                    { key: "A", text: "Yes, you can take the elevator up directly to the second floor." },
+                    { key: "B", text: "Yes, climb the elevator up directly into the first floor floor." },
+                    { key: "C", text: "No, elevator is only for going straightly backwards." },
+                    { key: "D", text: "Yes, exit elevator down into the sky ceiling." }
+                ],
+                correct: "A",
+                explanation: "'Take the elevator up' correctly utilizes the vertical motion structure + floor destination naming logic."
+            },
+            {
+                id: 4,
+                question: "Identify the prepositions of sequence: '____, go straight ahead. ____, turn right at the central stairs. ____, you will see the lab.'",
+                options: [
+                    { key: "A", text: "Finally / Second / Initially" },
+                    { key: "B", text: "Initially / Next / Finally" },
+                    { key: "C", text: "Never / Then / Slowly" },
+                    { key: "D", text: "Always / Lastly / Immediately" }
+                ],
+                correct: "B",
+                explanation: "'Initially' (or First), 'Next', and 'Finally' are the standard sequential ordering transition structures."
+            },
+            {
+                id: 5,
+                question: "What is the polite opposite expression of 'You cannot go in there (restricted laboratory area)'?",
+                options: [
+                    { key: "A", text: "Go inside instantly, please!" },
+                    { key: "B", text: "That wing is off-limits to visitors, but you are welcome to tour the robotics exhibit." },
+                    { key: "C", text: "No access! Turn back to escape." },
+                    { key: "D", text: "Why do you want to enter? No allowed." }
+                ],
+                correct: "B",
+                explanation: "Using polite redirect patterns ('off-limits... but you are welcome to...') ensures positive hospitality experiences."
+            }
+        ];
+
+        // Simulation scenarios
+        const simulationScenarios = [
+            {
+                id: 1,
+                character: "Arthur Pendelton",
+                tag: "Elderly Historian",
+                icon: "user",
+                request: "Hello young fellow. My knees are bothering me today. Could you show me the route to the Space Exhibit without using any stairs?",
+                choices: [
+                    {
+                        key: "A",
+                        text: "Just head up the spiral staircase, cross the main bridge and you are there.",
+                        points: 0,
+                        feedback: "Incorrect. Arthur specifically stated he has bad knees and cannot use the stairs."
+                    },
+                    {
+                        key: "B",
+                        text: "Walk straight past the Information Desk, take the elevator up to the 2nd floor, turn right immediately, and follow the hallway straight to the exhibit.",
+                        points: 10,
+                        feedback: "Perfect! You accurately guided him to the elevator for accessible, step-free navigation."
+                    },
+                    {
+                        key: "C",
+                        text: "Walk through the Laboratory and lift yourself up through the manual fire exit escalator.",
+                        points: 2,
+                        feedback: "Highly unsafe and grammatically inappropriate for senior guidance."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                character: "Dr. Elena Vance",
+                tag: "Physics Professor",
+                icon: "shield",
+                request: "Pardon me. I am late to deliver the main presentation inside the Chemical Laboratory. I was told it is near the restrooms. Could you give me the exact relative placement?",
+                choices: [
+                    {
+                        key: "A",
+                        text: "Sure! The Laboratory is on this floor. Turn left before the central elevator. Walk down the corridor; it's the second door on your right, directly opposite the restrooms.",
+                        points: 10,
+                        feedback: "Spot on! Precise relative positioning makes it easy for the visitor to identify the target door."
+                    },
+                    {
+                        key: "B",
+                        text: "It is on the top floor next to the space rocket, then jump left.",
+                        points: 0,
+                        feedback: "Incorrect. The laboratory is on the first floor, not near the space gallery."
+                    },
+                    {
+                        key: "C",
+                        text: "I think it is behind the Gift Shop. Walk around the counter and open the door marked STAFF ONLY.",
+                        points: 2,
+                        feedback: "Poor advice! Directing visitors to STAFF ONLY zones violates key safety codes."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                character: "Clara & Toby",
+                tag: "Hyperactive Children",
+                icon: "baby",
+                request: "Where can we buy the glowing science kits we saw in the online museum catalog? We want them right now!",
+                choices: [
+                    {
+                        key: "A",
+                        text: "You should look in the trash bin near the central elevator lobby.",
+                        points: 0,
+                        feedback: "Completely incorrect and impolite."
+                    },
+                    {
+                        key: "B",
+                        text: "Those kits are sold at the Gift Shop. From here, walk back toward the entrance foyer. The Gift Shop will be immediately on your left hand side.",
+                        points: 10,
+                        feedback: "Outstanding. Clear direction to the Gift Shop near the entry scans."
+                    },
+                    {
+                        key: "C",
+                        text: "Ask the laboratory staff to manufacture one for you in the test tubes.",
+                        points: 1,
+                        feedback: "Imaginative, but completely useless for locating retail spaces."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                character: "Sgt. Jameson",
+                tag: "Robotics Hobbyist",
+                icon: "cpu",
+                request: "Sir! I need directions to the Autonomous Robotics Exhibit. Where are the automated androids stationed?",
+                choices: [
+                    {
+                        key: "A",
+                        text: "Take the central elevator to the 2nd floor, turn right, and walk past the Space exhibit. The Robotics section is located right at the end of that corridor.",
+                        points: 10,
+                        feedback: "Flawless! Accurately structures multi-level mapping sequences."
+                    },
+                    {
+                        key: "B",
+                        text: "Turn around and exit the building, they are located outdoors in the parking lot structure.",
+                        points: 0,
+                        feedback: "Incorrect. The robotics exhibit is housed safely inside the second floor."
+                    },
+                    {
+                        key: "C",
+                        text: "Walk past the Information Desk and go down the stairs into the boiler room.",
+                        points: 2,
+                        feedback: "Incorrect and dangerous guidance."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                character: "Mabel Lin",
+                tag: "International Tourist",
+                icon: "plane",
+                request: "Hello, I just arrived from Tokyo. Where can I find basic pamphlets or brochures about the daily schedule? My phone has no signal.",
+                choices: [
+                    {
+                        key: "A",
+                        text: "You don't need flyers! Go straight and guess the schedule on the walls.",
+                        points: 1,
+                        feedback: "Impolite response to a visitor needing basic information support."
+                    },
+                    {
+                        key: "B",
+                        text: "Walk straight ahead for about ten paces. You will see the main Information Desk in the center of the lobby; they have physical maps and schedules in multiple languages.",
+                        points: 10,
+                        feedback: "Perfect guide performance! Excellent hospitality and clear, simple directional instruction."
+                    },
+                    {
+                        key: "C",
+                        text: "You can find information sheets inside the restrooms, taped to the mirrors.",
+                        points: 0,
+                        feedback: "Highly inaccurate. Informational brochures are exclusively located at the Info Desk."
+                    }
+                ]
+            }
+        ];
+
+        // Global State variables
+        let scoreDiagnostic = 0;
+        let scoreListening = 0;
+        let scoreCloze = 0;
+        let scoreSim = 0;
+        let totalScore = 0;
+        
+        let simCurrentIndex = 0;
+        let audioPlayState = null;
+
+        // Initialize UI components on loading
+        window.onload = function() {
+            lucide.createIcons();
+            renderDiagnosticQuiz();
+        };
+
+        // Render the Diagnostic Quiz items
+        function renderDiagnosticQuiz() {
+            const container = document.getElementById('diagnostic-questions-container');
+            container.innerHTML = '';
+            
+            diagnosticQuestions.forEach((q, idx) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'bg-slate-900/60 p-5 rounded-xl border border-slate-800 space-y-3';
+                qDiv.innerHTML = `
+                    <div class="font-bold text-white text-sm md:text-base flex gap-2">
+                        <span class="text-blue-400 font-mono">${idx + 1}.</span>
+                        <span>${q.question}</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-2">
+                        ${q.options.map(opt => `
+                            <button onclick="selectDiagnosticOption(${q.id}, '${opt.key}')" 
+                                    id="diag-btn-${q.id}-${opt.key}" 
+                                    class="diag-opt-btn-${q.id} text-left p-3.5 bg-slate-950 hover:bg-slate-800 border border-slate-800/80 rounded-lg text-xs md:text-sm text-slate-300 hover:text-white transition-all flex items-start gap-2">
+                                <span class="bg-slate-900 border border-slate-750 text-cyan-400 px-1.5 py-0.5 rounded text-[10px] font-bold font-mono">${opt.key}</span>
+                                <span class="flex-1">${opt.text}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="diag-feedback-${q.id}" class="hidden p-3 rounded-lg text-xs font-medium border"></div>
+                `;
+                container.appendChild(qDiv);
+            });
+            lucide.createIcons();
+        }
+
+        // Keep track of user's current selections
+        let selectedDiagAnswers = {};
+        function selectDiagnosticOption(qId, optionKey) {
+            selectedDiagAnswers[qId] = optionKey;
+            
+            // Toggle visual styling to show active selection
+            document.querySelectorAll(`.diag-opt-btn-${qId}`).forEach(btn => {
+                btn.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-white');
+                btn.classList.add('border-slate-800/80', 'bg-slate-950', 'text-slate-300');
+            });
+            
+            const selectedBtn = document.getElementById(`diag-btn-${qId}-${optionKey}`);
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-slate-800/80', 'bg-slate-950', 'text-slate-300');
+                selectedBtn.classList.add('border-blue-500', 'bg-blue-500/10', 'text-white');
+            }
+        }
+
+        // Validate Diagnostic Answers
+        function checkDiagnosticAnswers() {
+            let correctCount = 0;
+            let answeredAll = true;
+
+            diagnosticQuestions.forEach(q => {
+                if (!selectedDiagAnswers[q.id]) {
+                    answeredAll = false;
+                }
+            });
+
+            if (!answeredAll) {
+                alert("Please make sure to select an option for all 5 Diagnostic questions first!");
+                return;
+            }
+
+            diagnosticQuestions.forEach(q => {
+                const userAns = selectedDiagAnswers[q.id];
+                const feedbackDiv = document.getElementById(`diag-feedback-${q.id}`);
+                feedbackDiv.classList.remove('hidden');
+
+                if (userAns === q.correct) {
+                    correctCount++;
+                    feedbackDiv.className = "p-3 rounded-lg text-xs font-medium border bg-emerald-500/10 border-emerald-500/30 text-emerald-400 mt-2";
+                    feedbackDiv.innerHTML = `<strong>Correct:</strong> ${q.explanation}`;
+                } else {
+                    feedbackDiv.className = "p-3 rounded-lg text-xs font-medium border bg-rose-500/10 border-rose-500/30 text-rose-300 mt-2";
+                    feedbackDiv.innerHTML = `<strong>Incorrect.</strong> Recommended direction pattern: ${q.explanation}`;
+                }
+            });
+
+            scoreDiagnostic = correctCount * 10;
+            updateGlobalScore();
+
+            if (correctCount === 5) {
+                AudioFX.correct();
+            } else {
+                AudioFX.wrong();
+            }
+
+            // Lock diagnostic button, show next
+            document.getElementById('diagnostic-submit-btn').classList.add('hidden');
+            document.getElementById('diagnostic-next-btn').classList.remove('hidden');
+        }
+
+        // Vocabulary audio helper
+        function playVocabAudio(vocab) {
+            const speechMap = {
+                'entrance': "Entrance. The main doors where your admission tickets are scanned.",
+                'exit': "Exit. The egress pathways designed for leaving the museum halls.",
+                'information desk': "Information desk. The main focal reception hub for guest inquiries.",
+                'robotics exhibit': "Robotics exhibit. Featuring our cutting edge automation research displays.",
+                'space exhibit': "Space exhibit. Rocket propulsion mockups and interstellar simulator rooms.",
+                'laboratory': "Laboratory. Active physics and chemistry test labs.",
+                'stairs': "Stairs. Connecting flights between the lower lobby and the upper galleries.",
+                'elevator': "Elevator. Vertical mechanical transport offering convenient wheel-chair accessibility.",
+                'gift shop': "Gift shop. Museum souvenir marketplace with novelty books and gadget packages.",
+                'restrooms': "Restrooms. Lavatories located directly opposite the primary laboratories."
+            };
+            
+            if (speechMap[vocab]) {
+                speakText(speechMap[vocab], 0.9, false);
+            }
+        }
+
+        // Section 2: WHILE LISTENING AUDIO CONTROLS
+        function triggerSyntheticListeningAudio() {
+            // Animate waveform
+            const waveformBars = document.querySelectorAll('#audio-waveform div');
+            waveformBars.forEach(bar => {
+                bar.classList.add('animate-pulse');
+                bar.classList.remove('bg-slate-700');
+                bar.classList.add('bg-blue-400');
+            });
+
+            const fullDialogueText = 
+                "Visitor: Hello! Excuse me. I am a bit lost. Can you tell me how to get to the Robotics Exhibit from here? " +
+                "Guide: Certainly! Welcome to the museum. Since you are standing here by the Entrance, you need to go straight ahead, past the main Information Desk, until you hit the central elevators. " +
+                "Visitor: Okay, I see the elevators. Do I go up? " +
+                "Guide: Exactly! Take the elevator up to the second floor. When you exit, turn right immediately. Walk past the Space Exhibit on your left, and you will find the Robotics Exhibit right at the end of the hall. You can't miss it! " +
+                "Visitor: Excellent, thank you. And what about the Science Laboratory? I want to attend the two P.M. chemistry demonstration. " +
+                "Guide: Ah, the Laboratory is located on the first floor. Instead of taking the elevator, stay on this floor and turn left right before you reach it. Walk down that corridor. The laboratory will be the second door on your right, directly opposite the restrooms. " +
+                "Visitor: Understood! Left before the elevator, then second right opposite the restrooms. You've been extremely helpful. Have a great day! " +
+                "Guide: It's my absolute pleasure. Enjoy your exploration!";
+
+            speakText(fullDialogueText, 0.95, false);
+
+            let sec = 0;
+            clearInterval(audioPlayState);
+            audioPlayState = setInterval(() => {
+                sec++;
+                let displaySec = sec % 60;
+                let displayMin = Math.floor(sec / 60);
+                document.getElementById('audio-duration-display').innerText = 
+                    `${displayMin < 10 ? '0'+displayMin : displayMin}:${displaySec < 10 ? '0'+displaySec : displaySec} / 01:24`;
+                if (sec >= 84) {
+                    stopSyntheticListeningAudio();
+                }
+            }, 1000);
+        }
+
+        function stopSyntheticListeningAudio() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            clearInterval(audioPlayState);
+            
+            // Stop waveform animate
+            const waveformBars = document.querySelectorAll('#audio-waveform div');
+            waveformBars.forEach(bar => {
+                bar.classList.remove('animate-pulse');
+                bar.classList.remove('bg-blue-400');
+                bar.classList.add('bg-slate-700');
+            });
+        }
+
+        function toggleAudioScript() {
+            const box = document.getElementById('audio-script-box');
+            const btn = document.getElementById('toggle-script-btn');
+            if (box.classList.contains('hidden')) {
+                box.classList.remove('hidden');
+                btn.innerHTML = `<i data-lucide="eye-off" class="w-3.5 h-3.5"></i> Hide Script`;
+            } else {
+                box.classList.add('hidden');
+                btn.innerHTML = `<i data-lucide="file-text" class="w-3.5 h-3.5"></i> Reveal Script`;
+            }
+            lucide.createIcons();
+        }
+
+        // Checking Listening Answers
+        let userListeningScores = { 1: 0, 2: 0, 3: 0, 4: 0 };
+        
+        function checkListeningAnswer(qNum, choice) {
+            const feedback = document.getElementById(`listening-feedback-${qNum}`);
+            feedback.classList.remove('hidden');
+
+            // Set visual options locked/disabled style
+            document.querySelectorAll(`.listening-opt-${qNum}`).forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50');
+            });
+
+            let isCorrect = false;
+            let explanation = "";
+
+            if (qNum === 1) {
+                if (choice === 'C') {
+                    isCorrect = true;
+                    explanation = "Correct! The dialogue mentions 'Since you are standing here by the Entrance...'";
+                } else {
+                    explanation = "Incorrect. The visitor is situated near the primary ticket Entrance hall at the start.";
+                }
+            } else if (qNum === 2) {
+                if (choice === 'FALSE') {
+                    isCorrect = true;
+                    explanation = "Correct! The Robotics Exhibit is on the second floor. (You must take the elevator up).";
+                } else {
+                    explanation = "Incorrect. The Robotics Exhibit is located on the second floor.";
+                }
+            } else if (qNum === 4) {
+                if (choice === 'B') {
+                    isCorrect = true;
+                    explanation = "Correct! The guide explicitly states: 'second door on your right, directly opposite the restrooms.'";
+                } else {
+                    explanation = "Incorrect. The public restrooms sit directly across the Laboratory threshold.";
+                }
+            }
+
+            if (isCorrect) {
+                userListeningScores[qNum] = 10;
+                feedback.className = "mt-3 p-2.5 rounded text-xs bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
+                feedback.innerHTML = `<strong>Correct!</strong> ${explanation}`;
+                AudioFX.correct();
+            } else {
+                userListeningScores[qNum] = 0;
+                feedback.className = "mt-3 p-2.5 rounded text-xs bg-rose-500/10 border border-rose-500/30 text-rose-300";
+                feedback.innerHTML = `<strong>Incorrect.</strong> ${explanation}`;
+                AudioFX.wrong();
+            }
+
+            calculateListeningScore();
+        }
+
+        function checkListeningQ3() {
+            const userInput = document.getElementById('listening-q3-input').value.trim().toLowerCase();
+            const feedback = document.getElementById('listening-feedback-3');
+            feedback.classList.remove('hidden');
+
+            if (userInput === 'left') {
+                userListeningScores[3] = 10;
+                feedback.className = "mt-3 p-2.5 rounded text-xs bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
+                feedback.innerHTML = "<strong>Correct!</strong> The guide tells the visitor to 'turn left right before you reach it (the elevator)'.";
+                AudioFX.correct();
+            } else {
+                userListeningScores[3] = 0;
+                feedback.className = "mt-3 p-2.5 rounded text-xs bg-rose-500/10 border border-rose-500/30 text-rose-300";
+                feedback.innerHTML = "<strong>Incorrect.</strong> The missing direction sequence is 'LEFT'. ('turn left right before you reach the elevator').";
+                AudioFX.wrong();
+            }
+
+            calculateListeningScore();
+        }
+
+        function calculateListeningScore() {
+            scoreListening = Object.values(userListeningScores).reduce((acc, curr) => acc + curr, 0);
+            updateGlobalScore();
+        }
+
+        // Section 3: AFTER LISTENING (Passage & Short Answer)
+        function checkClozePassage() {
+            const gap1 = document.getElementById('cloze-gap-1').value;
+            const gap2 = document.getElementById('cloze-gap-2').value;
+            const gap3 = document.getElementById('cloze-gap-3').value;
+            const gap4 = document.getElementById('cloze-gap-4').value;
+
+            const feedbackSpan = document.getElementById('cloze-feedback');
+
+            if (!gap1 || !gap2 || !gap3 || !gap4) {
+                feedbackSpan.className = "text-sm font-semibold text-yellow-400";
+                feedbackSpan.innerText = "Please complete all four options before verifying.";
+                return;
+            }
+
+            let matches = 0;
+            if (gap1 === 'straight') matches++;
+            if (gap2 === 'Once') matches++;
+            if (gap3 === 'down') matches++;
+            if (gap4 === 'next to') matches++;
+
+            scoreCloze = matches * 5; // Up to 20 Points
+            updateGlobalScore();
+
+            if (matches === 4) {
+                feedbackSpan.className = "text-sm font-semibold text-emerald-400";
+                feedbackSpan.innerText = `Excellent! All gaps filled accurately (+20 PTS).`;
+                AudioFX.correct();
+            } else {
+                feedbackSpan.className = "text-sm font-semibold text-rose-400";
+                feedbackSpan.innerText = `Correctly matched: ${matches} / 4. Please adjust options.`;
+                AudioFX.wrong();
+            }
+        }
+
+        // Analyze Guide short-answer writing performance
+        function analyzeShortAnswer() {
+            const userInput = document.getElementById('short-answer-input').value.trim();
+            const feedbackDiv = document.getElementById('short-answer-feedback');
+            
+            if (userInput.length === 0) {
+                alert("Please write down your directions response first!");
+                return;
+            }
+
+            feedbackDiv.classList.remove('hidden');
+
+            // Word counting logic
+            const words = userInput.split(/\s+/).filter(w => w.length > 0);
+            document.getElementById('short-answer-char-count').innerText = `${words.length} words`;
+
+            if (words.length < 15) {
+                feedbackDiv.className = "p-4 rounded-xl border bg-rose-500/10 border-rose-500/30 text-rose-300";
+                feedbackDiv.innerHTML = `<strong>Attention:</strong> Your response is too short (${words.length} words). Standard directions explanation requires at least 15 words to be clear. Please expand.`;
+                AudioFX.wrong();
+                return;
+            }
+
+            // Simple parser looking for sequence words and markers
+            const transitions = ['first', 'then', 'next', 'after', 'finally', 'second', 'initially', 'once'];
+            const imperatives = ['turn', 'go', 'walk', 'take', 'pass', 'cross', 'head'];
+            const landmarks = ['restrooms', 'elevator', 'stairs', 'laboratory', 'exhibit'];
+
+            let transitionMatches = transitions.filter(t => userInput.toLowerCase().includes(t));
+            let imperativeMatches = imperatives.filter(imp => userInput.toLowerCase().includes(imp));
+            let landmarkMatches = landmarks.filter(lan => userInput.toLowerCase().includes(lan));
+
+            let scoreEarned = 10; // Base passing score
+            
+            let analysisHTML = `<h5 class="font-bold text-white mb-2">Guide Response Evaluation:</h5>`;
+            analysisHTML += `<p class="text-xs text-slate-300 mb-3">Your text contains excellent linguistic markers. Here is the automated lexical analysis:</p>`;
+            
+            analysisHTML += `<ul class="space-y-1.5 text-xs text-slate-400 mb-4">`;
+            analysisHTML += `<li>✔ <strong>Transitions detected:</strong> ${transitionMatches.length > 0 ? transitionMatches.join(', ') : '<span class="text-rose-400">None detected (try adding: first, then, after that)</span>'}</li>`;
+            analysisHTML += `<li>✔ <strong>Action verbs (Imperatives) detected:</strong> ${imperativeMatches.length > 0 ? imperativeMatches.join(', ') : '<span class="text-rose-400">None detected (try adding: turn, walk, take)</span>'}</li>`;
+            analysisHTML += `<li>✔ <strong>Museum landmarks referenced:</strong> ${landmarkMatches.length > 0 ? landmarkMatches.join(', ') : '<span class="text-rose-400">None detected (try adding: elevator, restrooms)</span>'}</li>`;
+            analysisHTML += `</ul>`;
+
+            // Calculate score additions
+            if (transitionMatches.length > 0) scoreEarned += 2;
+            if (imperativeMatches.length > 0) scoreEarned += 2;
+            if (landmarkMatches.length > 0) scoreEarned += 1;
+
+            scoreCloze = (scoreCloze - (scoreCloze % 20)) + scoreEarned; // Caps aggregate cloze/short-answer section at 35 Max
+            updateGlobalScore();
+
+            feedbackDiv.className = "p-4 rounded-xl border bg-emerald-500/10 border-emerald-500/30 text-emerald-400";
+            analysisHTML += `<p class="text-xs font-bold text-cyan-400 mt-2">Lexical Assessment Result: Structure Valid. Score awarded: +${scoreEarned} PTS!</p>`;
+            
+            feedbackDiv.innerHTML = analysisHTML;
+            AudioFX.correct();
+        }
+
+
+        // Section 4: LIVE ROLE-PLAY SIMULATION GAMEPLAY
+        function loadSimulationScenario() {
+            const sc = simulationScenarios[simCurrentIndex];
+            
+            // Set stats
+            document.getElementById('sim-counter').innerText = `${simCurrentIndex + 1} / 5`;
+            document.getElementById('sim-points').innerText = `${scoreSim} PTS`;
+
+            // Load texts
+            document.getElementById('visitor-name').innerText = sc.character;
+            document.getElementById('visitor-tag').innerText = sc.tag;
+            document.getElementById('visitor-request-text').innerText = `"${sc.request}"`;
+            
+            // Set Lucide Icon for character
+            const iconElement = document.getElementById('visitor-icon');
+            iconElement.setAttribute('data-lucide', sc.icon);
+            lucide.createIcons();
+
+            // Load options
+            const grid = document.getElementById('sim-choices-grid');
+            grid.innerHTML = '';
+            
+            sc.choices.forEach(opt => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.className = "sim-option-btn text-left p-4 bg-slate-900/90 hover:bg-slate-850 border border-slate-800 rounded-xl text-xs md:text-sm text-slate-300 hover:text-white transition-all flex items-start gap-3";
+                choiceBtn.onclick = () => selectSimChoice(opt);
+                choiceBtn.innerHTML = `
+                    <div class="mt-0.5 bg-slate-800 border border-slate-700 text-cyan-400 font-mono text-xs px-2 py-0.5 rounded font-bold">${opt.key}</div>
+                    <div class="flex-1">${opt.text}</div>
+                `;
+                grid.appendChild(choiceBtn);
+            });
+
+            // Hide action panels
+            document.getElementById('sim-feedback-panel').classList.add('hidden');
+            document.getElementById('sim-next-btn').classList.add('hidden');
+            document.getElementById('sim-results-btn').classList.add('hidden');
+        }
+
+        // Trigger Synthesis for role play
+        function speakVisitorScenario() {
+            const currentRequest = simulationScenarios[simCurrentIndex].request;
+            speakText(currentRequest, 0.9, true);
+        }
+
+        function selectSimChoice(selectedOption) {
+            // Disable options
+            document.querySelectorAll('.sim-option-btn').forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50');
+            });
+
+            const feedbackPanel = document.getElementById('sim-feedback-panel');
+            feedbackPanel.classList.remove('hidden');
+
+            // Save score
+            scoreSim += selectedOption.points;
+            updateGlobalScore();
+            
+            document.getElementById('sim-points').innerText = `${scoreSim} PTS`;
+
+            if (selectedOption.points === 10) {
+                feedbackPanel.className = "flex-1 mr-4 p-3.5 rounded-lg text-xs leading-normal bg-emerald-500/10 border border-emerald-500/30 text-emerald-400";
+                feedbackPanel.innerHTML = `<strong>Splendid Guide Response (+10 PTS)!</strong> ${selectedOption.feedback}`;
+                AudioFX.correct();
+            } else {
+                feedbackPanel.className = "flex-1 mr-4 p-3.5 rounded-lg text-xs leading-normal bg-rose-500/10 border border-rose-500/30 text-rose-300";
+                feedbackPanel.innerHTML = `<strong>Flawed Guidance (+${selectedOption.points} PTS).</strong> ${selectedOption.feedback}`;
+                AudioFX.wrong();
+            }
+
+            // Decide navigation button
+            if (simCurrentIndex < 4) {
+                document.getElementById('sim-next-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('sim-results-btn').classList.remove('hidden');
+            }
+        }
+
+        function nextSimulationScenario() {
+            simCurrentIndex++;
+            loadSimulationScenario();
+        }
+
+
+        // Navigation phase coordinator
+        function transitionToPhase(phaseNumber) {
+            // Stop speech
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+
+            // Hide all
+            document.getElementById('welcome-screen').classList.add('hidden');
+            document.getElementById('before-listening-section').classList.add('hidden');
+            document.getElementById('while-listening-section').classList.add('hidden');
+            document.getElementById('after-listening-section').classList.add('hidden');
+            document.getElementById('simulation-section').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('hidden');
+            
+            document.getElementById('course-navigation').classList.remove('hidden');
+
+            const badge = document.getElementById('current-phase-badge');
+            const fill = document.getElementById('progress-bar-fill');
+            const percentText = document.getElementById('progress-percentage');
+
+            if (phaseNumber === 1) {
+                document.getElementById('before-listening-section').classList.remove('hidden');
+                badge.innerText = "BEFORE LISTENING";
+                badge.className = "px-3 py-1 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-md text-xs font-bold header-font";
+                fill.style.width = "25%";
+                percentText.innerText = "25%";
+            } else if (phaseNumber === 2) {
+                document.getElementById('while-listening-section').classList.remove('hidden');
+                badge.innerText = "WHILE LISTENING";
+                badge.className = "px-3 py-1 bg-purple-500/20 text-purple-400 border border-purple-500/30 rounded-md text-xs font-bold header-font";
+                fill.style.width = "50%";
+                percentText.innerText = "50%";
+            } else if (phaseNumber === 3) {
+                document.getElementById('after-listening-section').classList.remove('hidden');
+                badge.innerText = "AFTER LISTENING";
+                badge.className = "px-3 py-1 bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 rounded-md text-xs font-bold header-font";
+                fill.style.width = "75%";
+                percentText.innerText = "75%";
+            } else if (phaseNumber === 4) {
+                document.getElementById('simulation-section').classList.remove('hidden');
+                badge.innerText = "LIVE ROLEPLAY";
+                badge.className = "px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-md text-xs font-bold header-font";
+                fill.style.width = "90%";
+                percentText.innerText = "90%";
+                loadSimulationScenario();
+            }
+        }
+
+        function startApp() {
+            transitionToPhase(1);
+        }
+
+        function updateGlobalScore() {
+            totalScore = scoreDiagnostic + scoreListening + scoreCloze + scoreSim;
+            document.getElementById('global-score').innerText = totalScore;
+        }
+
+        // Show assessment summary report
+        function showFinalResults() {
+            document.getElementById('course-navigation').classList.add('hidden');
+            document.getElementById('simulation-section').classList.add('hidden');
+            
+            const results = document.getElementById('results-screen');
+            results.classList.remove('hidden');
+
+            document.getElementById('score-val-diag').innerText = `${scoreDiagnostic} / 50`;
+            document.getElementById('score-val-listening').innerText = `${scoreListening} / 40`;
+            document.getElementById('score-val-cloze').innerText = `${scoreCloze} / 30`;
+            document.getElementById('score-val-sim').innerText = `${scoreSim} / 50`;
+            document.getElementById('final-aggregate-pts').innerText = `${totalScore} / 170`;
+
+            const badge = document.getElementById('cert-badge');
+            const stamp = document.getElementById('evaluation-stamp');
+
+            if (totalScore >= 140) {
+                badge.innerText = "ELITE MUSEUM NAVIGATOR";
+                badge.className = "mt-2 block px-4 py-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-lg text-sm font-bold header-font";
+                stamp.innerText = "GRADUATED WITH GOLD STAR DISTINCTION";
+            } else if (totalScore >= 100) {
+                badge.innerText = "CERTIFIED ASSOCIATE GUIDE";
+                badge.className = "mt-2 block px-4 py-2 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-lg text-sm font-bold header-font";
+                stamp.innerText = "QUALIFIED NAVIGATION ASSISTANT";
+            } else {
+                badge.innerText = "CADET IN RE-TRAINING";
+                badge.className = "mt-2 block px-4 py-2 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded-lg text-sm font-bold header-font";
+                stamp.innerText = "PRACTICE RECOMMENDED TO SECURE CERTIFICATION";
+            }
+        }
+
+        function resetTraining() {
+            // Reset scores
+            scoreDiagnostic = 0;
+            scoreListening = 0;
+            scoreCloze = 0;
+            scoreSim = 0;
+            totalScore = 0;
+            simCurrentIndex = 0;
+            selectedDiagAnswers = {};
+            userListeningScores = { 1: 0, 2: 0, 3: 0, 4: 0 };
+
+            document.getElementById('global-score').innerText = '0';
+            document.getElementById('listening-q3-input').value = '';
+            
+            // Reset gap fills
+            document.getElementById('cloze-gap-1').value = '';
+            document.getElementById('cloze-gap-2').value = '';
+            document.getElementById('cloze-gap-3').value = '';
+            document.getElementById('cloze-gap-4').value = '';
+            document.getElementById('cloze-feedback').innerText = '';
+
+            // Reset short text areas
+            document.getElementById('short-answer-input').value = '';
+            document.getElementById('short-answer-feedback').classList.add('hidden');
+            document.getElementById('short-answer-char-count').innerText = "0 / 15 words min";
+
+            // Reset diagnostics
+            renderDiagnosticQuiz();
+            document.getElementById('diagnostic-submit-btn').classList.remove('hidden');
+            document.getElementById('diagnostic-next-btn').classList.add('hidden');
+
+            // Redirect back to welcome screen
+            document.getElementById('course-navigation').classList.add('hidden');
+            document.getElementById('before-listening-section').classList.add('hidden');
+            document.getElementById('while-listening-section').classList.add('hidden');
+            document.getElementById('after-listening-section').classList.add('hidden');
+            document.getElementById('simulation-section').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('welcome-screen').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
