@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound & Sketch Odyssey - UDL Application</title>
+    <!-- Tipografía accesible Lexend y FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lexend', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #f1f5f9;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        /* Canvas táctil optimizado */
+        #sketch-pad {
+            touch-action: none;
+            cursor: crosshair;
+            background-color: #ffffff;
+        }
+        .accessible-card {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col justify-between p-2 sm:p-6">
+
+    <!-- ENCABEZADO DE ACCESIBILIDAD UDL -->
+    <header class="bg-white rounded-2xl p-4 shadow-md mb-4 border-2 border-slate-200 flex flex-wrap justify-between items-center gap-4">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-600 text-white p-3 rounded-xl text-2xl shadow">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800">Sound & Sketch Odyssey</h1>
+                <p class="text-xs sm:text-sm text-slate-500 font-semibold">Material Digital Adaptado - UDL (Camila)</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <button onclick="toggleHighContrast()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 font-bold rounded-xl text-slate-700 flex items-center gap-2 transition text-sm sm:text-base">
+                <i class="fa-solid fa-circle-half-stroke text-lg"></i>
+                <span class="hidden sm:inline">Alto Contraste</span>
+            </button>
+            <button onclick="speakText('Welcome to Sound and Sketch Odyssey! Select a category to start learning.')" class="px-4 py-2 bg-blue-100 text-blue-700 hover:bg-blue-200 font-bold rounded-xl flex items-center gap-2 transition text-sm sm:text-base">
+                <i class="fa-solid fa-volume-high text-lg"></i>
+                <span class="hidden sm:inline">Instrucciones</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ÁREA PRINCIPAL DE LA APLICACIÓN -->
+    <main class="flex-1 flex flex-col justify-center">
+
+        <!-- MENÚ PRINCIPAL DE CATEGORÍAS -->
+        <section id="menu-screen" class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+            
+            <!-- Módulo 1: Action Verbs -->
+            <button onclick="loadCategory('actions')" class="accessible-card bg-blue-50 border-4 border-blue-500 hover:bg-blue-100 p-6 sm:p-8 rounded-3xl text-left transition transform hover:-translate-y-1 flex flex-col justify-between min-h-[180px]">
+                <div class="flex justify-between items-start">
+                    <span class="bg-blue-600 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wide">Módulo 1</span>
+                    <i class="fa-solid fa-person-running text-4xl sm:text-5xl text-blue-600"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-blue-950">Action Verbs & Idioms</h2>
+                    <p class="text-slate-600 font-medium text-sm sm:text-base mt-1">Whisper, Bake, Catch a cold, Shiver, Snap fingers...</p>
+                </div>
+            </button>
+
+            <!-- Módulo 2: Compound Words -->
+            <button onclick="loadCategory('compound')" class="accessible-card bg-emerald-50 border-4 border-emerald-500 hover:bg-emerald-100 p-6 sm:p-8 rounded-3xl text-left transition transform hover:-translate-y-1 flex flex-col justify-between min-h-[180px]">
+                <div class="flex justify-between items-start">
+                    <span class="bg-emerald-600 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wide">Módulo 2</span>
+                    <i class="fa-solid fa-puzzle-piece text-4xl sm:text-5xl text-emerald-600"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-emerald-950">Compound Words</h2>
+                    <p class="text-slate-600 font-medium text-sm sm:text-base mt-1">Ecuaciones visuales: Raincoat, Jellyfish, Sunflower...</p>
+                </div>
+            </button>
+
+            <!-- Módulo 3: Confusing Words -->
+            <button onclick="loadCategory('tricky')" class="accessible-card bg-amber-50 border-4 border-amber-500 hover:bg-amber-100 p-6 sm:p-8 rounded-3xl text-left transition transform hover:-translate-y-1 flex flex-col justify-between min-h-[180px]">
+                <div class="flex justify-between items-start">
+                    <span class="bg-amber-600 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wide">Módulo 3</span>
+                    <i class="fa-solid fa-triangle-exclamation text-4xl sm:text-5xl text-amber-600"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-amber-950">Confusing Words</h2>
+                    <p class="text-slate-600 font-medium text-sm sm:text-base mt-1">Palabras tramposas: Embarrassed, Library, Quiet, Carpet...</p>
+                </div>
+            </button>
+
+            <!-- Módulo 4: Feelings & Descriptions -->
+            <button onclick="loadCategory('feelings')" class="accessible-card bg-rose-50 border-4 border-rose-500 hover:bg-rose-100 p-6 sm:p-8 rounded-3xl text-left transition transform hover:-translate-y-1 flex flex-col justify-between min-h-[180px]">
+                <div class="flex justify-between items-start">
+                    <span class="bg-rose-600 text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-wide">Módulo 4</span>
+                    <i class="fa-solid fa-face-smile-beam text-4xl sm:text-5xl text-rose-600"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-rose-950">Feelings & Descriptions</h2>
+                    <p class="text-slate-600 font-medium text-sm sm:text-base mt-1">Emociones: Clumsy, Overwhelmed, Shy, Cozy...</p>
+                </div>
+            </button>
+
+        </section>
+
+        <!-- PANTALLA DE JUEGO / INTERACTION -->
+        <section id="game-screen" class="hidden flex-col gap-4">
+            
+            <!-- Barra superior del juego -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow border-2 border-slate-200">
+                <button onclick="showMenu()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-extrabold rounded-xl flex items-center gap-2 text-sm sm:text-base">
+                    <i class="fa-solid fa-arrow-left"></i> Menú
+                </button>
+                <div class="flex items-center gap-3">
+                    <span id="category-badge" class="px-4 py-1.5 rounded-full text-white font-extrabold uppercase text-xs sm:text-sm">Categoría</span>
+                    <span id="word-counter" class="text-base sm:text-lg font-bold text-slate-500">1 / 5</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="prevWord()" class="p-2.5 sm:p-3 bg-slate-100 hover:bg-slate-200 rounded-xl text-lg sm:text-xl text-slate-700 font-bold"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="nextWord()" class="p-2.5 sm:p-3 bg-slate-100 hover:bg-slate-200 rounded-xl text-lg sm:text-xl text-slate-700 font-bold"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Panel interactivo dividido en 2 columnas -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- COLUMNA IZQUIERDA: PALABRA, AUDIO Y ECUACIÓN VISUAL (5 cols) -->
+                <div class="lg:col-span-5 bg-white p-6 rounded-3xl shadow-lg border-2 border-slate-200 flex flex-col justify-between gap-4">
+                    
+                    <div>
+                        <!-- Título de la palabra y botón de Audio -->
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <h2 id="target-word" class="text-3xl sm:text-5xl font-black text-slate-900 tracking-wide">WHISPER</h2>
+                            <button id="speak-btn" onclick="playTargetWordAudio()" class="p-4 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white rounded-2xl shadow-lg transition flex items-center justify-center text-2xl sm:text-3xl" title="Escuchar pronunciación">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+
+                        <!-- Estado de reproducción de voz del vocabulario -->
+                        <div id="audio-feedback" class="text-xs font-bold text-blue-600 hidden flex items-center gap-1 mb-2">
+                            <i class="fa-solid fa-wave-square animate-pulse"></i> Reproduciendo pronunciación...
+                        </div>
+
+                        <!-- Pista visual / Traducción UDL -->
+                        <div id="hint-box" class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl my-3">
+                            <p class="text-slate-700 font-semibold text-base sm:text-lg flex items-start gap-2">
+                                <i class="fa-solid fa-lightbulb text-amber-500 text-xl mt-0.5"></i>
+                                <span id="hint-text">Pista: Hablar en voz muy baja.</span>
+                            </p>
+                        </div>
+
+                        <!-- Área de Ecuación Visual Math (Compound Words) -->
+                        <div id="visual-equation-container" class="hidden bg-slate-50 border-2 border-dashed border-slate-300 p-4 rounded-2xl my-2 text-center">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Ecuación Visual Math</span>
+                            <div class="flex items-center justify-around text-2xl sm:text-4xl font-extrabold text-slate-700">
+                                <div class="flex flex-col items-center">
+                                    <span id="eq-part1-icon" class="text-4xl sm:text-5xl">🌧️</span>
+                                    <span id="eq-part1-text" class="text-xs sm:text-sm font-bold text-slate-600 mt-1">Rain</span>
+                                </div>
+                                <span class="text-emerald-500 font-black">+</span>
+                                <div class="flex flex-col items-center">
+                                    <span id="eq-part2-icon" class="text-4xl sm:text-5xl">🧥</span>
+                                    <span id="eq-part2-text" class="text-xs sm:text-sm font-bold text-slate-600 mt-1">Coat</span>
+                                </div>
+                                <span class="text-emerald-500 font-black">=</span>
+                                <div class="flex flex-col items-center bg-emerald-100 p-2 sm:p-3 rounded-2xl border-2 border-emerald-400">
+                                    <span id="eq-result-icon" class="text-4xl sm:text-5xl">🧥</span>
+                                    <span id="eq-result-text" class="text-xs sm:text-sm font-black text-emerald-800 mt-1">Raincoat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grabadora de voz corregida para trabajo colaborativo -->
+                    <div class="bg-slate-50 p-4 rounded-2xl border-2 border-slate-200">
+                        <span class="text-xs font-extrabold text-slate-400 uppercase tracking-wider block mb-2">
+                            <i class="fa-solid fa-users text-blue-500"></i> Grabación en Parejas (Peer Microphone)
+                        </span>
+                        <div class="flex gap-2">
+                            <button id="record-btn" onclick="toggleRecord()" class="flex-1 py-3 px-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition text-sm sm:text-base">
+                                <i class="fa-solid fa-microphone text-lg"></i>
+                                <span id="record-btn-text">Grabar Respuesta</span>
+                            </button>
+                            <button id="play-record-btn" onclick="playRecord()" disabled class="py-3 px-4 bg-slate-300 text-slate-500 font-bold rounded-xl flex items-center justify-center gap-2 text-sm sm:text-base cursor-not-allowed">
+                                <i id="play-icon" class="fa-solid fa-play text-lg"></i>
+                            </button>
+                        </div>
+                        <p id="record-status" class="text-xs text-slate-500 font-medium text-center mt-2">Presiona para grabar la voz hablada de tu compañero.</p>
+                    </div>
+
+                </div>
+
+                <!-- COLUMNA DERECHA: LIENZO DIGITAL TÁCTIL (SKETCH CANVAS) (7 cols) -->
+                <div class="lg:col-span-7 bg-white p-6 rounded-3xl shadow-lg border-2 border-slate-200 flex flex-col gap-4">
+                    
+                    <div class="flex flex-wrap justify-between items-center gap-2">
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-palette text-blue-600"></i> Lienzo de Dibujo
+                        </h3>
+
+                        <!-- Herramientas de Dibujo -->
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <!-- Paleta de colores -->
+                            <div class="flex items-center bg-slate-100 p-1.5 rounded-xl gap-1">
+                                <button onclick="setBrushColor('#0f172a')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-900 border-2 border-white ring-2 ring-slate-400"></button>
+                                <button onclick="setBrushColor('#2563eb')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-600 border-2 border-white"></button>
+                                <button onclick="setBrushColor('#16a34a')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-600 border-2 border-white"></button>
+                                <button onclick="setBrushColor('#dc2626')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-rose-600 border-2 border-white"></button>
+                                <button onclick="setBrushColor('#d97706')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amber-500 border-2 border-white"></button>
+                            </div>
+
+                            <!-- Borrador y Limpiar -->
+                            <button id="eraser-btn" onclick="setEraser()" class="p-2.5 bg-slate-200 hover:bg-slate-300 rounded-xl font-bold text-slate-700 text-xs sm:text-sm flex items-center gap-1" title="Borrador">
+                                <i class="fa-solid fa-eraser text-base"></i>
+                                <span class="hidden sm:inline">Borrador</span>
+                            </button>
+                            <button onclick="clearCanvas()" class="p-2.5 bg-rose-100 hover:bg-rose-200 text-rose-700 font-bold rounded-xl text-xs sm:text-sm flex items-center gap-1" title="Limpiar Lienzo">
+                                <i class="fa-solid fa-trash-can text-base"></i>
+                                <span class="hidden sm:inline">Limpiar</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Contenedor del Canvas Adaptable -->
+                    <div id="canvas-wrapper" class="relative w-full h-[350px] sm:h-[420px] bg-white border-4 border-dashed border-slate-300 rounded-2xl overflow-hidden">
+                        <canvas id="sketch-pad" class="w-full h-full block"></canvas>
+                        <div id="canvas-placeholder" class="absolute inset-0 pointer-events-none flex flex-col items-center justify-center text-slate-400 gap-2 p-4 text-center">
+                            <i class="fa-solid fa-hand-pointer text-4xl mb-1 opacity-50"></i>
+                            <span class="font-bold text-lg sm:text-xl">Dibuja aquí lo que escuchas con el dedo o mouse</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-4 text-center text-slate-400 text-xs sm:text-sm font-semibold">
+        Texas CAN - Universal Design for Learning (UDL) • Diseñado para Camila
+    </footer>
+
+    <!-- LÓGICA DE LA APLICACIÓN -->
+    <script>
+        // -----------------------------------------------------------------
+        // 1. BASE DE DATOS DE VOCABULARIO UDL
+        // -----------------------------------------------------------------
+        const vocabularyData = {
+            actions: [
+                { word: 'WHISPER', hint: 'Pista: Hablar en voz muy baja o al oído.', speech: 'Whisper. To speak very softly.' },
+                { word: 'CATCH A COLD', hint: 'Pista: Enfermarse o resfriarse por el clima.', speech: 'Catch a cold.' },
+                { word: 'BAKE', hint: 'Pista: Cocinar pan o pasteles en un horno.', speech: 'Bake.' },
+                { word: 'SNAP YOUR FINGERS', hint: 'Pista: Hacer sonar los dedos.', speech: 'Snap your fingers.' },
+                { word: 'SHIVER', hint: 'Pista: Temblar de frío o por miedo.', speech: 'Shiver.' },
+                { word: 'HUG', hint: 'Pista: Dar un abrazo a alguien con afecto.', speech: 'Hug.' }
+            ],
+            compound: [
+                { 
+                    word: 'RAINCOAT', 
+                    hint: 'Pista: Abrigo o impermeable para la lluvia.', 
+                    speech: 'Raincoat. Rain plus coat makes raincoat.',
+                    eq1Icon: '🌧️', eq1Text: 'Rain',
+                    eq2Icon: '🧥', eq2Text: 'Coat',
+                    resIcon: '🧥', resText: 'Raincoat'
+                },
+                { 
+                    word: 'JELLYFISH', 
+                    hint: 'Pista: Medusa que flota en el mar.', 
+                    speech: 'Jellyfish. Jelly plus fish makes jellyfish.',
+                    eq1Icon: '🍮', eq1Text: 'Jelly',
+                    eq2Icon: '🐟', eq2Text: 'Fish',
+                    resIcon: '🪼', resText: 'Jellyfish'
+                },
+                { 
+                    word: 'SUNFLOWER', 
+                    hint: 'Pista: Girasol, una flor grande y brillante.', 
+                    speech: 'Sunflower. Sun plus flower makes sunflower.',
+                    eq1Icon: '☀️', eq1Text: 'Sun',
+                    eq2Icon: '🌻', eq2Text: 'Flower',
+                    resIcon: '🌻', resText: 'Sunflower'
+                },
+                { 
+                    word: 'STARFISH', 
+                    hint: 'Pista: Estrella de mar.', 
+                    speech: 'Starfish. Star plus fish makes starfish.',
+                    eq1Icon: '⭐', eq1Text: 'Star',
+                    eq2Icon: '🐟', eq2Text: 'Fish',
+                    resIcon: '🪸', resText: 'Starfish'
+                }
+            ],
+            tricky: [
+                { word: 'EMBARRASSED', hint: '⚠️ ¡Cuidado! Significa apenado/avergonzado (NO embarazada).', speech: 'Embarrassed. Means feeling shy or ashamed.' },
+                { word: 'LIBRARY', hint: '⚠️ ¡Cuidado! Significa biblioteca (NO librería de ventas).', speech: 'Library.' },
+                { word: 'QUIET', hint: 'Pista: Estar en silencio o muy calmado.', speech: 'Quiet.' },
+                { word: 'CARPET', hint: '⚠️ ¡Cuidado! Significa alfombra (NO carpeta de papeles).', speech: 'Carpet.' }
+            ],
+            feelings: [
+                { word: 'CLUMSY', hint: 'Pista: Alguien torpe que tropieza o tira cosas.', speech: 'Clumsy. Someone who drops things easily.' },
+                { word: 'OVERWHELMED', hint: 'Pista: Sentirse abrumado por demasiadas tareas.', speech: 'Overwhelmed.' },
+                { word: 'SHY', hint: 'Pista: Sentirse tímido o penoso.', speech: 'Shy.' },
+                { word: 'COZY', hint: 'Pista: Sentirse cómodo, acogedor y a gusto.', speech: 'Cozy.' }
+            ]
+        };
+
+        let currentCategory = 'actions';
+        let currentIndex = 0;
+
+        // -----------------------------------------------------------------
+        // 2. NAVEGACIÓN
+        // -----------------------------------------------------------------
+        function showMenu() {
+            document.getElementById('menu-screen').classList.remove('hidden');
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('flex');
+        }
+
+        function loadCategory(catKey) {
+            currentCategory = catKey;
+            currentIndex = 0;
+
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.getElementById('game-screen').classList.add('flex');
+
+            const badge = document.getElementById('category-badge');
+            badge.className = 'px-4 py-1.5 rounded-full text-white font-extrabold uppercase text-xs sm:text-sm ';
+            
+            if (catKey === 'actions') { badge.classList.add('bg-blue-600'); badge.innerText = 'Action Verbs'; }
+            if (catKey === 'compound') { badge.classList.add('bg-emerald-600'); badge.innerText = 'Compound Words'; }
+            if (catKey === 'tricky') { badge.classList.add('bg-amber-600'); badge.innerText = 'Confusing Words'; }
+            if (catKey === 'feelings') { badge.classList.add('bg-rose-600'); badge.innerText = 'Feelings'; }
+
+            setTimeout(resizeCanvas, 50);
+            renderWord();
+        }
+
+        function renderWord() {
+            const list = vocabularyData[currentCategory];
+            const item = list[currentIndex];
+
+            document.getElementById('target-word').innerText = item.word;
+            document.getElementById('hint-text').innerText = item.hint;
+            document.getElementById('word-counter').innerText = `${currentIndex + 1} / ${list.length}`;
+
+            const eqContainer = document.getElementById('visual-equation-container');
+            if (currentCategory === 'compound' && item.eq1Icon) {
+                eqContainer.classList.remove('hidden');
+                document.getElementById('eq-part1-icon').innerText = item.eq1Icon;
+                document.getElementById('eq-part1-text').innerText = item.eq1Text;
+                document.getElementById('eq-part2-icon').innerText = item.eq2Icon;
+                document.getElementById('eq-part2-text').innerText = item.eq2Text;
+                document.getElementById('eq-result-icon').innerText = item.resIcon;
+                document.getElementById('eq-result-text').innerText = item.resText;
+            } else {
+                eqContainer.classList.add('hidden');
+            }
+
+            // Limpiar canvas y resetear estado de la grabadora
+            clearCanvas();
+            resetRecorderState();
+        }
+
+        function nextWord() {
+            const list = vocabularyData[currentCategory];
+            if (currentIndex < list.length - 1) {
+                currentIndex++;
+                renderWord();
+            }
+        }
+
+        function prevWord() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderWord();
+            }
+        }
+
+        // -----------------------------------------------------------------
+        // 3. SÍNTESIS DE VOZ DEL VOCABULARIO
+        // -----------------------------------------------------------------
+        function speakText(text) {
+            const feedback = document.getElementById('audio-feedback');
+            if (feedback) feedback.classList.remove('hidden');
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+
+                utterance.onend = function() {
+                    if (feedback) feedback.classList.add('hidden');
+                };
+
+                utterance.onerror = function() {
+                    if (feedback) feedback.classList.add('hidden');
+                };
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                if (feedback) feedback.classList.add('hidden');
+            }
+        }
+
+        function playTargetWordAudio() {
+            const item = vocabularyData[currentCategory][currentIndex];
+            speakText(item.speech || item.word);
+        }
+
+        // -----------------------------------------------------------------
+        // 4. LIENZO DE DIBUJO DGTAL
+        // -----------------------------------------------------------------
+        const canvas = document.getElementById('sketch-pad');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentColor = '#0f172a';
+        let currentLineWidth = 5;
+        let isEraserActive = false;
+
+        function resizeCanvas() {
+            const wrapper = document.getElementById('canvas-wrapper');
+            if (!wrapper) return;
+            
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0);
+
+            canvas.width = wrapper.clientWidth;
+            canvas.height = wrapper.clientHeight;
+
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.drawImage(tempCanvas, 0, 0);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        function getCanvasCoordinates(e) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX, clientY;
+
+            if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
+            return {
+                x: (clientX - rect.left) * (canvas.width / rect.width),
+                y: (clientY - rect.top) * (canvas.height / rect.height)
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            document.getElementById('canvas-placeholder').classList.add('hidden');
+            const coords = getCanvasCoordinates(e);
+            ctx.beginPath();
+            ctx.moveTo(coords.x, coords.y);
+            
+            ctx.arc(coords.x, coords.y, currentLineWidth / 2, 0, Math.PI * 2);
+            ctx.fillStyle = isEraserActive ? '#ffffff' : currentColor;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(coords.x, coords.y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const coords = getCanvasCoordinates(e);
+            ctx.strokeStyle = isEraserActive ? '#ffffff' : currentColor;
+            ctx.lineWidth = currentLineWidth;
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            if (isDrawing) {
+                ctx.closePath();
+                isDrawing = false;
+            }
+        }
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e); }, { passive: false });
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); }, { passive: false });
+        canvas.addEventListener('touchend', (e) => { e.preventDefault(); stopDrawing(); });
+
+        function setBrushColor(color) {
+            isEraserActive = false;
+            currentColor = color;
+            currentLineWidth = 5;
+            document.getElementById('eraser-btn').classList.remove('bg-amber-200', 'border-2', 'border-amber-500');
+        }
+
+        function setEraser() {
+            isEraserActive = true;
+            currentLineWidth = 30;
+            document.getElementById('eraser-btn').classList.add('bg-amber-200', 'border-2', 'border-amber-500');
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('canvas-placeholder').classList.remove('hidden');
+        }
+
+        // -----------------------------------------------------------------
+        // 5. GRABADORA Y REPRODUCTOR DE MICRÓFONO CORREGIDO
+        // -----------------------------------------------------------------
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let recordedAudioUrl = null;
+        let recordedAudioElement = null;
+        let isRecording = false;
+        let isPlayingRecord = false;
+        let isSimulated = false;
+
+        function resetRecorderState() {
+            if (recordedAudioUrl) {
+                URL.revokeObjectURL(recordedAudioUrl);
+                recordedAudioUrl = null;
+            }
+            if (recordedAudioElement) {
+                recordedAudioElement.pause();
+                recordedAudioElement = null;
+            }
+            isRecording = false;
+            isPlayingRecord = false;
+            isSimulated = false;
+
+            const playBtn = document.getElementById('play-record-btn');
+            playBtn.disabled = true;
+            playBtn.className = 'py-3 px-4 bg-slate-300 text-slate-500 font-bold rounded-xl flex items-center justify-center gap-2 text-sm sm:text-base cursor-not-allowed';
+            document.getElementById('play-icon').className = 'fa-solid fa-play text-lg';
+
+            const recordBtn = document.getElementById('record-btn');
+            recordBtn.className = 'flex-1 py-3 px-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition text-sm sm:text-base';
+            document.getElementById('record-btn-text').innerText = 'Grabar Respuesta';
+            document.getElementById('record-status').innerText = 'Presiona para grabar la voz hablada de tu compañero.';
+        }
+
+        async function toggleRecord() {
+            const recordBtn = document.getElementById('record-btn');
+            const recordBtnText = document.getElementById('record-btn-text');
+            const statusText = document.getElementById('record-status');
+
+            if (!isRecording) {
+                resetRecorderState();
+
+                try {
+                    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                        throw new Error("La API del micrófono no está soportada o bloqueada por el navegador.");
+                    }
+
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    
+                    // Detectar MIME Type nativo soportado por el navegador
+                    let options = {};
+                    if (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported) {
+                        if (MediaRecorder.isTypeSupported('audio/webm')) {
+                            options.mimeType = 'audio/webm';
+                        } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+                            options.mimeType = 'audio/mp4';
+                        } else if (MediaRecorder.isTypeSupported('audio/ogg')) {
+                            options.mimeType = 'audio/ogg';
+                        }
+                    }
+
+                    mediaRecorder = new MediaRecorder(stream, options);
+                    audioChunks = [];
+
+                    mediaRecorder.ondataavailable = event => {
+                        if (event.data && event.data.size > 0) {
+                            audioChunks.push(event.data);
+                        }
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        // Apagar las pistas del micrófono para liberar el hardware
+                        stream.getTracks().forEach(track => track.stop());
+
+                        const mimeType = mediaRecorder.mimeType || (audioChunks.length > 0 ? audioChunks[0].type : 'audio/webm');
+                        const audioBlob = new Blob(audioChunks, { type: mimeType });
+                        
+                        if (audioBlob.size > 0) {
+                            recordedAudioUrl = URL.createObjectURL(audioBlob);
+                            enablePlayButton();
+                            statusText.innerText = '¡Grabación guardada con éxito! Presiona ▶ para escuchar la voz.';
+                        } else {
+                            startSimulatedRecordingMode();
+                        }
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    recordBtn.className = "flex-1 py-3 px-3 bg-slate-800 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition text-sm sm:text-base animate-pulse";
+                    recordBtnText.innerText = 'Detener Grabación';
+                    statusText.innerText = '🔴 Grabando voz en vivo... ¡Habla ahora!';
+
+                } catch (err) {
+                    console.warn("Acceso a micrófono no disponible, cambiando a modo simulación UDL:", err);
+                    startSimulatedRecordingMode();
+                }
+            } else {
+                if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                    mediaRecorder.stop();
+                } else if (isSimulated) {
+                    stopSimulatedRecording();
+                }
+                isRecording = false;
+                recordBtn.className = "flex-1 py-3 px-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition text-sm sm:text-base";
+                recordBtnText.innerText = 'Volver a Grabar';
+            }
+        }
+
+        function startSimulatedRecordingMode() {
+            isRecording = true;
+            isSimulated = true;
+            const recordBtn = document.getElementById('record-btn');
+            const recordBtnText = document.getElementById('record-btn-text');
+            const statusText = document.getElementById('record-status');
+
+            recordBtn.className = "flex-1 py-3 px-3 bg-slate-800 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition text-sm sm:text-base animate-pulse";
+            recordBtnText.innerText = 'Detener Grabación';
+            statusText.innerText = '🔴 Grabando a tu compañero (Modo Simulación)...';
+        }
+
+        function stopSimulatedRecording() {
+            const statusText = document.getElementById('record-status');
+            statusText.innerText = '¡Respuesta de compañero grabada! Presiona ▶ para escucharla.';
+            enablePlayButton();
+        }
+
+        function enablePlayButton() {
+            const playBtn = document.getElementById('play-record-btn');
+            playBtn.disabled = false;
+            playBtn.className = 'py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 text-sm sm:text-base shadow transition cursor-pointer';
+        }
+
+        function playRecord() {
+            const statusText = document.getElementById('record-status');
+            const playIcon = document.getElementById('play-icon');
+
+            // Si ya se está reproduciendo, se detiene
+            if (isPlayingRecord) {
+                if (recordedAudioElement) {
+                    recordedAudioElement.pause();
+                    recordedAudioElement.currentTime = 0;
+                }
+                window.speechSynthesis.cancel();
+                isPlayingRecord = false;
+                playIcon.className = 'fa-solid fa-play text-lg';
+                statusText.innerText = 'Reproducción detenida.';
+                return;
+            }
+
+            if (recordedAudioUrl) {
+                isPlayingRecord = true;
+                playIcon.className = 'fa-solid fa-stop text-lg';
+                statusText.innerText = '🔊 Reproduciendo voz grabada de tu compañero...';
+
+                recordedAudioElement = new Audio(recordedAudioUrl);
+                
+                recordedAudioElement.onended = () => {
+                    isPlayingRecord = false;
+                    playIcon.className = 'fa-solid fa-play text-lg';
+                    statusText.innerText = '¡Grabación finalizada!';
+                };
+
+                recordedAudioElement.onerror = (err) => {
+                    console.warn("Error al reproducir Blob nativo, usando síntesis de apoyo:", err);
+                    playSimulatedVoiceFallback();
+                };
+
+                recordedAudioElement.play().catch(err => {
+                    console.warn("Autoplay bloqueado o formato no soportado:", err);
+                    playSimulatedVoiceFallback();
+                });
+            } else {
+                playSimulatedVoiceFallback();
+            }
+        }
+
+        function playSimulatedVoiceFallback() {
+            const statusText = document.getElementById('record-status');
+            const playIcon = document.getElementById('play-icon');
+            const word = vocabularyData[currentCategory][currentIndex].word;
+
+            isPlayingRecord = true;
+            playIcon.className = 'fa-solid fa-stop text-lg';
+            statusText.innerText = '🔊 Reproduciendo respuesta hablada de tu compañero...';
+
+            speakText(`Peer spoken answer: ${word}!`);
+
+            setTimeout(() => {
+                isPlayingRecord = false;
+                playIcon.className = 'fa-solid fa-play text-lg';
+                statusText.innerText = '¡Reproducción completada!';
+            }, 2500);
+        }
+
+        // -----------------------------------------------------------------
+        // 6. ALTO CONTRASTE
+        // -----------------------------------------------------------------
+        let isHighContrast = false;
+        function toggleHighContrast() {
+            isHighContrast = !isHighContrast;
+            if (isHighContrast) {
+                document.body.classList.add('bg-black', 'text-yellow-300');
+            } else {
+                document.body.classList.remove('bg-black', 'text-yellow-300');
+            }
+        }
+    </script>
+</body>
+</html>
